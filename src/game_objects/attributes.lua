@@ -55,7 +55,7 @@ function SMODS.populate_attributes()
 end
 
 function Card:has_attribute(attribute)
-    if not SMODS.Attributes[attribute] then return false end
+    if not SMODS.Attributes[attribute] or not self.config.center.attributes then return false end
     if self.config.center.attributes[attribute] then return true end
     for _, att in ipairs(SMODS.Attributes[attribute].alias or {}) do
         if self.config.center.attributes[att] then return true end
@@ -110,6 +110,22 @@ SMODS.Attribute({
 
 SMODS.Attribute({
     key = 'xscore',
+})
+
+SMODS.Attribute({
+    key = 'blindsize'
+})
+
+SMODS.Attribute({
+    key = 'xblindsize'
+})
+
+SMODS.Attribute({
+    key = 'balance'
+})
+
+SMODS.Attribute({
+    key = 'swap'
 })
 
 SMODS.Attribute({
@@ -378,12 +394,12 @@ SMODS.Attribute({
 
 SMODS.Attribute({
     key = 'joker',
-    keys = { "j_abstract", "j_riff_raff", "j_swashbuckler" }
+    keys = { "j_abstract", "j_riff_raff", "j_swashbuckler", 'j_invisible' }
 })
 
 SMODS.Attribute({
     key = 'joker_slot',
-    keys = { "j_abstract", "j_stencil" }
+    keys = { "j_stencil" }
 })
 
 SMODS.Attribute({
@@ -402,7 +418,7 @@ SMODS.Attribute({
 
 SMODS.Attribute({
     key = 'hands',
-    keys = { "j_loyalty_card", "j_burglar", "j_troubadour", "j_green_joker", "j_square", "j_dusk", "j_acrobat", "j_flower_pot", "j_dna", "j_vagabond", "j_obelisk" }
+    keys = { "j_loyalty_card", "j_burglar", "j_troubadour", "j_dusk", "j_acrobat", "j_dna", "j_vagabond" }
 })
 
 SMODS.Attribute({
@@ -428,6 +444,20 @@ SMODS.Attribute({
 SMODS.Attribute({
     key = 'seals',
     keys = { "j_certificate" }
+})
+
+SMODS.Attribute({
+    key = 'editions'
+})
+
+SMODS.Attribute({
+    key = 'tag',
+    keys = { 'j_diet_cola' }
+})
+
+SMODS.Attribute({
+    key = 'skip',
+    keys = { 'j_throwback' }
 })
 
 SMODS.Attribute({
