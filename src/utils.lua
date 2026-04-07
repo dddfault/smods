@@ -3873,10 +3873,6 @@ function SMODS.set_ui_element_shader(element, input_args)
     local default_send_func = input_args.default_send_func or function() end
     local extra = input_args.extra or {}
 
-    local args = {
-        G.TIMERS.REAL/28,
-        G.TIMERS.REAL
-    }
 	local shadered = true
     
     if not shader or shader == "none" or shader == "dissolve" then
@@ -3893,7 +3889,10 @@ function SMODS.set_ui_element_shader(element, input_args)
 	else
 		local key = SMODS.Shaders[shader].original_key
 		
-		G.SHADERS[shader]:send(key, args)
+		G.SHADERS[shader]:send(key, {
+            G.TIMERS.REAL/28,
+            G.TIMERS.REAL
+        })
         default_send_func(element, shader, unpack(extra))
 	end
 
