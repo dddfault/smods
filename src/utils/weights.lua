@@ -365,7 +365,7 @@ function SMODS.create_shop_card(area)
     }
     card_args.key = SMODS.poll_object({type = card_args.type, append = 'sho'})
 
-    local flags = SMODS.calculate_context({create_shop_card = true, set = card_args.type, key = card_args.key})
+    local flags = SMODS.calculate_context({create_shop_card = true, set = card_args.type, key = card_args.key, area = card_args.area})
 
     local card = SMODS.create_card(SMODS.merge_defaults(flags.shop_create_flags or {}, card_args))
 
