@@ -3411,6 +3411,10 @@ Set `prefix_config.key = false` on your object instead.]]):format(obj.key), obj.
                 self.shader = self.key
             end
         end,
+        draw = function(self, shader, canvas)
+            love.graphics.setShader(shader)
+            love.graphics.draw(canvas, 0, 0)
+        end,
         post_inject_class = function(self)
             table.sort(self.obj_buffer, function(_self, _other) return self.obj_table[_self].order < self.obj_table[_other].order end)
         end,
