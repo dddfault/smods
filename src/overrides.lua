@@ -2865,3 +2865,14 @@ G.FUNCS.change_viewed_back = function(...)
 	end
 	return g_funcs_change_viewed_back_ref(...)
 end
+
+-- let's misuse this for blind size queue
+G.FUNCS.blind_chip_UI_scale = function(e)
+	if not (G.GAME.blind or {}).chips then return end
+	local blind_chips = G.GAME.blind.chips
+	if G.BLIND_SIZE_DISPLAY_QUEUE and G.BLIND_SIZE_DISPLAY_QUEUE[1] then
+		blind_chips = math.floor(G.BLIND_SIZE_DISPLAY_QUEUE[1])
+	end
+	G.GAME.blind.chip_text = number_format(blind_chips)
+    e.config.scale = scale_number(blind_chips, 0.7, 100000)
+end

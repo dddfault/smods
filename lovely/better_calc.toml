@@ -809,6 +809,16 @@ payload = '''
 -- context.after calculations
 SMODS.calculate_context({full_hand = G.play.cards, scoring_hand = scoring_hand, scoring_name = text, poker_hands = poker_hands, after = true})
 
+-- set `ability.played_this_ante` on played cards
+for _,v in ipairs(G.play.cards) do
+    G.E_MANAGER:add_event(Event({
+        func = function()
+            v.ability.played_this_ante = true
+            return true
+        end,
+    }))
+end
+
 -- TARGET: effects after hand evaluation'''
 
 # calc_dollar_bonus call through other objects
