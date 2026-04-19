@@ -3441,8 +3441,13 @@ Set `prefix_config.key = false` on your object instead.]]):format(obj.key), obj.
             }
         end,
         order = 0, -- not necessary, but explicitly set in this example for clarity
-        should_apply = function(self) return not G.recording_mode or G.video_control end,
-    }
+        should_apply = function(self)
+            if love.system.getOS() == "Android" or "iOS" and #SMODS.ScreenShader.obj_buffer > 1 then
+                return false
+            end
+            return not G.recording_mode or G.video_control
+        end,
+		}
 
     -------------------------------------------------------------------------------------------------
     ----- API CODE GameObject.Edition
