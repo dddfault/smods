@@ -490,3 +490,22 @@ self.draw_steps[#self.draw_steps+1] = {
 payload = '''
   tilt_shadow = v.tilt_shadow,
 '''
+
+# Align info_boxes to edge of the parent card instead of centered
+[[patches]]
+[patches.pattern]
+target = 'functions/UI_definitions.lua'
+match_indent = true
+position = 'at'
+pattern = '''info_boxes[#info_boxes+1] =
+          {n=G.UIT.R, config={align = "cm"}, nodes={
+          {n=G.UIT.R, config={align = "cm", colour = lighten(G.C.JOKER_GREY, 0.5), r = 0.1, padding = 0.05, emboss = 0.05}, nodes={
+            info_tip_from_rows(v, v.name),
+          }}
+        }}'''
+payload = '''info_boxes[#info_boxes+1] =
+          {n=G.UIT.R, config={align = (card.T.x > G.ROOM.T.w * 0.4) and "cr" or "cl"}, nodes={
+          {n=G.UIT.R, config={align = (card.T.x > G.ROOM.T.w * 0.4) and "cr" or "cl", colour = lighten(G.C.JOKER_GREY, 0.5), r = 0.1, padding = 0.05, emboss = 0.05}, nodes={
+            info_tip_from_rows(v, v.name),
+          }}
+        }}''' 
