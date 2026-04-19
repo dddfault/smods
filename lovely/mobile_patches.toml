@@ -18,7 +18,7 @@ if love.system.getOS() == 'Android' or love.system.getOS() == 'iOS' then
 	self.F_SOUND_THREAD = true
 	self.F_VIDEO_SETTINGS = false
 	self.F_ENGLISH_ONLY = false
-	self.F_QUIT_BUTTON = false
+	self.F_QUIT_BUTTON = true
     self.F_MOBILE_UI = true
 end
 '''
