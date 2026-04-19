@@ -3713,12 +3713,17 @@ function SMODS.upgrade_poker_hands(args)
                 G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.9, func = function()
                     play_sound('tarot1')
                     if args.from then args.from:juice_up(0.8, 0.5) end
-                    G.TAROT_INTERRUPT_PULSE = nil
                     return true end }))
                 update_hand_text({sound = 'button', volume = 0.7, pitch = 0.9, delay = 0}, {level=G.GAME.hands[hand].level})
             end
         end
         if not instant then delay(1.3) end
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                G.TAROT_INTERRUPT_PULSE = nil
+                return true
+            end
+        }))
         SMODS.calculate_context(context)
     end
 
