@@ -15,7 +15,7 @@ local eligible_bosses = {}
 payload = '''
 -- Use SMODS object weight system when enabled
 if SMODS.optional_features.object_weights then
-    local ret_boss = SMODS.poll_object({type = 'Blind'})
+    local ret_boss = SMODS.poll_object({type = 'Blind', seed = 'boss'})
     G.GAME.bosses_used[ret_boss] = G.GAME.bosses_used[ret_boss] + 1
     return ret_boss
 end
@@ -60,7 +60,7 @@ pattern = '''
 if G.FORCE_TAG then return G.FORCE_TAG end
 '''
 payload = '''
-if SMODS.optional_features.object_weights then return SMODS.poll_object({type = 'Tag'}) end
+if SMODS.optional_features.object_weights then return SMODS.poll_object({type = 'Tag', append = append}) end
 '''
 
 

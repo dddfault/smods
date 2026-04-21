@@ -1170,8 +1170,7 @@ G.E_MANAGER:add_event(Event({
     end
 }))
 G.E_MANAGER:add_event(Event({
-    trigger = 'before',
-    delay = 0.4,
+    trigger = 'immediate',
     func = function()
         if #SMODS.drawn_cards > 0 then
             SMODS.calculate_context({first_hand_drawn = not G.GAME.current_round.any_hand_drawn and G.GAME.facing_blind,
